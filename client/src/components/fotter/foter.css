@@ -1,0 +1,10 @@
+.linkft{
+    display: flex;
+    justify-content: flex-start;
+    color:yellow;
+}
+.contact-info{
+    display: flex;
+    justify-content:flex-end;  
+    color:yellow; 
+}

@@ -1,0 +1,16 @@
+.bac{
+    background-image:  url('https://wallpaperaccess.com/full/113299.jpg');
+}
+.pro{
+    background-color: aliceblue !important;
+}
+.crt{
+    background-color: aliceblue !important;
+}
+.carttpro{
+    position: relative;
+    bottom: 222px;
+    border-radius: 200px !important;
+    width: 220px;
+    height: 150px;
+}

@@ -1,0 +1,45 @@
+/* Reset styles to ensure consistency */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Style the logo container */
+  .logo {
+    font-family: 'Arial', sans-serif;
+    font-size: 48px;
+    color: #333; /* Change the color as desired */
+    text-transform: uppercase;
+    position: relative;
+  }
+  
+  /* Style the 'D' in the logo */
+  .letter-D {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 4px solid #333; /* Border color */
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    background-color:yellow; /* Change the background color to blue */
+    color: black; /* Text color */
+  }
+  
+  /* Style the 'S' in the logo */
+  .letter-S {
+    position: relative;
+    display: inline-block;
+    margin-left: -10px; /* Adjust the positioning as needed */
+    width: 40px;
+    height: 40px;
+    border: 4px solid #333; /* Border color */
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    background-color: yellow; /* Keep the background color as yellow */
+    color: black; /* Text color */
+  }
+  

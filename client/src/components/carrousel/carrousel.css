@@ -1,0 +1,14 @@
+.home {
+  width: 800px; /* Adjust as needed */
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+  display: block; /* Set to display as a block */
+}
+
+
+.imagg {
+  width: 800px;
+  height: 800px;
+  display: block; /* Set to display as a block */
+}

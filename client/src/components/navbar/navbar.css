@@ -1,0 +1,16 @@
+/* Apply margin to buttons with the 'btdaw' class */
+.btdaw {
+
+    margin-right: 10px;
+    color:yellow; /* Adjust the right margin as needed */
+  }
+  .nav{
+    background: transparent !important;
+  }
+  .bg-body-tertiary {
+    background-color: aqua;
+         --bs-bg-opacity: 0 !important
+  }
+  .container-fluid{
+    background: transparent;
+  }
