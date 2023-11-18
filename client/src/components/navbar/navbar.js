@@ -31,10 +31,10 @@ function NNavbar() {
        <Link to={'/login'}> <Button variant="outline-secondary" className='btdaw' >Login</Button>{' '}</Link>
         <Link to={'/Profil'}><Button variant="outline-secondary" className='btdaw' >Profil</Button>{' '}</Link>
         <Link to={'/Product'}><Button variant="outline-secondary" className='btdaw'>Product</Button>{' '}</Link>
-        <Button variant="outline-secondary" className='btdaw'>Editproduct</Button>{' '}
-        <Button variant="outline-secondary" className='btdaw'>EditProfil</Button>{' '}
-        <Button variant="outline-secondary" className='btdaw'>UserList</Button>{' '}
-        <Button variant="outline-secondary" className='btdaw'>ProductsList</Button>{' '}
+        <Link to={'/AddProduct'}><Button variant="outline-secondary" className='btdaw'>addproduct</Button>{' '}</Link>
+        <Link to={'/EditProduct'}><Button variant="outline-secondary" className='btdaw'>EditProduct</Button>{' '}</Link>
+        <Link to={'/UserList'}><Button variant="outline-secondary" className='btdaw'>UserList</Button>{' '}</Link>
+        
         </li>
       </ul>
       <form className="d-flex" role="search">

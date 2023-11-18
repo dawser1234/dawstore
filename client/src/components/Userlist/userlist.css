@@ -1,0 +1,44 @@
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  border: 2px solid yellow;
+}
+
+.user-table th, .user-table td {
+  padding: 15px;
+  text-align: left;
+}
+
+.user-image {
+  max-width: 50px;
+  max-height: 50px;
+  border-radius: 50%;
+}
+
+.user-details {
+  padding-left: 20px;
+}
+
+/* Apply a background color to all rows for better readability */
+.user-table tbody tr {
+  background-color: #f8f8f843;
+}
+
+/* Style the header row */
+.user-table thead {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Remove borders from all cells */
+.user-table th, .user-table td {
+  border: none;
+}
+
+/* Add a subtle box-shadow to the table */
+.user-table {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Add any other styles you need */

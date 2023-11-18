@@ -1,0 +1,45 @@
+body {
+    padding-top: 30px;
+    min-width: 500px;
+    
+  }
+  
+  /****Heading****/
+  
+  /****Shopping Cart Icon****/
+  div#cartStatus {
+    top: 27px;
+    text-align: right;
+    color: white; /* Set text color to white */
+    font-size: 1.2em; /* Increase font size */
+  }
+  
+  i.glyphicon-shopping-cart {
+    font-size: 2em;
+    color: white; /* Set text color to white */
+  }
+  
+  span#cartCount {
+    font-size: 1.5em;
+    color: white; /* Set text color to white */
+  }
+  
+  /****Nav Bar****/
+  
+  button.navbar-toggle {
+    float: left;
+    margin-left: 10px;
+    color: white; /* Set text color to white */
+  }
+  
+  /****Footer****/
+  footer {
+    margin-top: 100px;
+    color: white; /* Set text color to white */
+  }
+h1{
+    color: aliceblue;
+}  
+label{
+    color: aliceblue;
+}

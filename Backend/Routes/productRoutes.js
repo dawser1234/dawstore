@@ -3,7 +3,7 @@ const product = require('../models/product'); // Make sure to use PascalCase for
 const upload=require('../utils/multer')
 const isAuth=require('../middlewares/Autho')
 const router = express.Router();
-router.post("/", upload("products").single("file"), isAuth(),async (req, res) => {
+router.post("/", upload("products").single("file"),async (req, res) => {
     try {
         const url =` ${req.protocol}://${req.get("host")}/${req.file.path}`
         // Create a new product instance using the request body
@@ -66,7 +66,7 @@ router.delete('/:id', async (req, res) => {
     const { id } = req.params;
   
     try {
-      result=await product.findByIdAndRemove(id);
+      result=await product.findByIdAndDelete(id);
       res.send( result );
     } catch (error) {
    

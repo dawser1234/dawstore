@@ -1,6 +1,4 @@
-.bac{
-    background-image:  url('https://wallpaperaccess.com/full/113299.jpg');
-}
+
 .pro{
     background-color: aliceblue !important;
 }
@@ -11,6 +9,12 @@
     position: relative;
     bottom: 222px;
     border-radius: 200px !important;
-    width: 220px;
+    width: 180px;
     height: 150px;
+}
+.container{
+    width: auto !important;
+}
+.w-100{
+    height: 200px;
 }

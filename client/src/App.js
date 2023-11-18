@@ -12,8 +12,23 @@ import Register from './components/Register/Register';
 import Profil from './components/Profil/Profil';
 import ListProduct from './components/Product/ListProduct';
 import Products from './components/Product/Product';
+import UserList from './components/UserList/UserList';
+import AddProduct from './components/Product/AddProduct';
+import EditProduct from './components/Product/Editproduct';
+import EditProfile from './components/Profil/EditProfil';
+import { useDispatch } from 'react-redux';
+import { getAllProducts } from './Redux/Actions/actionProduct';
+import { useEffect } from 'react';
 
 function App() {
+  const dipstach=useDispatch()
+  
+  useEffect(() => {
+   
+dipstach(getAllProducts())
+
+  }, [])
+  
   
   return (
     <div className="App">
@@ -22,7 +37,13 @@ function App() {
     <Route path='/login' element={<Login/>}/>
     <Route path='/register' element={<Register/>}/>
     <Route path='/Profil' element={<Profil/>}/>
-    <Route path='/Product' element={<ListProduct produit={Products}/>}/>
+    <Route path='/Product' element={<ListProduct/>}/>
+    <Route path='/UserList' element={<UserList/>}/>
+    <Route path='/AddProduct' element={<AddProduct/>}/>
+    <Route path='/EditProduct' element={<EditProduct/>}/>
+    <Route path='/EditProfile' element={<EditProfile/>}/>
+
+
     
 
 
