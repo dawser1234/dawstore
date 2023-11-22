@@ -1,6 +1,7 @@
 import React from 'react'
 import './Product.css'
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom'
 import { deleteProduct } from '../../Redux/Actions/actionProduct';
 import { useDispatch } from 'react-redux';
 function Product({el}) {
@@ -12,7 +13,7 @@ function Product({el}) {
   return (
     
   <div className="text-center container py-5">
-    <h4 className="mt-4 mb-5"><strong>{el.title}</strong></h4>
+    <h4 className="mt-4 mb-5"><strong></strong></h4>
     <div className="row">
       <div className="col-lg-4 col-md-12 mb-4">
         <div className="card carttpro">
@@ -34,8 +35,11 @@ function Product({el}) {
               <h5 className="card-title mb-3">{el.title}</h5>
             </a>
             <a href className="text-reset">
-              <p>Category</p>
+              <p>{el.description}</p>
               <button type="button" class="btn btn-warning" onClick={() => handleDelete(el._id)}>delete</button>
+              <br></br>
+              <br></br>
+             <Link to={`/EditProduct/${el._id}`}><button type="button" class="btn btn-warning">edit</button></Link>
             </a>
             <h6 className="mb-3">{el.price}</h6>
           </div>

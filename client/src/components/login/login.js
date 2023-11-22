@@ -1,12 +1,28 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './login.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faKey } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookSquare, faGooglePlusSquare, faTwitterSquare } from '@fortawesome/free-brands-svg-icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../../Redux/Actions/actionUser';
+import Alert from '../Alert/Alert';
+
+
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  const disptach=useDispatch()
+  const [email, setemail] = useState("")
+  const [password, setpassword] = useState("")
+
+  const handleSubmit = (e) => {
+  e.preventDefault()
+    disptach(login({email,password}, navigate))
+
+      };
   return (
     <div className="container">
       <div className="d-flex justify-content-center h-100">
@@ -33,7 +49,7 @@ const Login = () => {
                     <FontAwesomeIcon icon={faUser} />
                   </span>
                 </div>
-                <input type="text" className="form-control" placeholder="username" />
+                <input type="text" className="form-control" placeholder="email"  onChange={(e) => setemail(e.target.value)}  />
               </div>
               <div className="input-group form-group">
                 <div className="input-group-prepend">
@@ -41,13 +57,13 @@ const Login = () => {
                     <FontAwesomeIcon icon={faKey} />
                   </span>
                 </div>
-                <input type="password" className="form-control" placeholder="password" />
+                <input type="password" className="form-control" placeholder="password" onChange={(e) => setpassword(e.target.value)}  />
               </div>
               <div className="row align-items-center remember">
                 <input type="checkbox" />Remember Me
               </div>
               <div className="form-group">
-                <input type="submit" value="Login" className="btn float-right login_btn" />
+                <input type="submit" value="Login" className="btn float-right login_btn" onClick={handleSubmit} />
               </div>
             </form>
           </div>

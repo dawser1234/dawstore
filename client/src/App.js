@@ -40,7 +40,7 @@ dipstach(getAllProducts())
     <Route path='/Product' element={<ListProduct/>}/>
     <Route path='/UserList' element={<UserList/>}/>
     <Route path='/AddProduct' element={<AddProduct/>}/>
-    <Route path='/EditProduct' element={<EditProduct/>}/>
+    <Route path='/EditProduct/:id' element={<EditProduct/>}/>
     <Route path='/EditProfile' element={<EditProfile/>}/>
 
 

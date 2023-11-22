@@ -24,7 +24,7 @@ const AddProduct = () => {
     e.preventDefault()
     // Create a FormData object to handle the image upload
     const Data = new FormData();
-    Data.append('name', productName);
+    Data.append('title', productName);
     Data.append('price', productPrice);
     Data.append('description', productDescription);
     Data.append('file', productImage);

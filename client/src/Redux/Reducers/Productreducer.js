@@ -1,10 +1,20 @@
-import axios from "axios";
-import { GET_ALLPRODUCTS_SUCCESS, ADD_PRODUCT,DELETE_PRODUCT_SUCCESS,DELETE_PRODUCT_FAIL } from "../Const/constProduct";
+// src/Redux/Reducers/productReducer.js
+
+import {
+  GET_ALLPRODUCTS_SUCCESS,
+  ADD_PRODUCT,
+  DELETE_PRODUCT_SUCCESS,
+  DELETE_PRODUCT_FAIL,
+  UPDATE_PRODUCT_SUCCESS,
+  UPDATE_PRODUCT_FAIL,
+  GET_ONE_PRODUCT_SUCCESS,
+  GET_ONE_PRODUCT_FAIL,
+} from "../Const/constProduct";
 
 const initialState = {
   products: [],
   oneproduct: {},
-  error: {}
+  error: {},
 };
 
 export const productReducer = (state = initialState, action) => {
@@ -13,20 +23,35 @@ export const productReducer = (state = initialState, action) => {
       return { ...state, products: action.payload };
 
     case ADD_PRODUCT:
-      return { ...state};
-      case DELETE_PRODUCT_SUCCESS:
-      // Filter out the deleted product from the products array
-      const updatedProducts = state.products.filter(product => product.id !== action.payload);
+      return { ...state, products: [...state.products, action.payload] };
 
+    case DELETE_PRODUCT_SUCCESS:
+      const updatedProducts = state.products.filter((product) => product._id !== action.payload);
       return {
         ...state,
         products: updatedProducts,
       };
 
     case DELETE_PRODUCT_FAIL:
-      // Handle delete failure if needed
       return { ...state, error: action.payload };
-      
+
+    case UPDATE_PRODUCT_SUCCESS:
+      const updatedProductsEdit = state.products.map((product) =>
+        product._id === action.payload._id ? action.payload : product
+      );
+      return {
+        ...state,
+        products: updatedProductsEdit,
+      };
+
+    case UPDATE_PRODUCT_FAIL:
+      return { ...state, error: action.payload };
+
+    case GET_ONE_PRODUCT_SUCCESS:
+      return { ...state, oneproduct: action.payload };
+
+    case GET_ONE_PRODUCT_FAIL:
+      return { ...state, error: action.payload };
 
     default:
       return state;
