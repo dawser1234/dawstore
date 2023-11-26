@@ -83,7 +83,7 @@ router.post('/login', loginCheck(), validator, async (req, res) => {
 
       if(req.file)
           { const url = `${req.protocol}://${req.get("host")}/${req.file.path}`
-          UserUpdated.logo =url
+          UserUpdated.img =url
            await UserUpdated.save()
              }
           console.log((result.modifiedCount) || (req.file));

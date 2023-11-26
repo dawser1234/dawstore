@@ -1,4 +1,4 @@
-import { GET_ALLUSER_SUCCESS, GET_CURRENT_SUCCESS, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT, REGISTER_FAIL } from "../Const/constUser"
+import { GET_ALLUSER_SUCCESS, GET_CURRENT_SUCCESS, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT, REGISTER_FAIL,EDIT_USER_SUCCESS,EDIT_USER_FAIL} from "../Const/constUser"
 const initialState = {
     users: [],
     currentUser: {},
@@ -21,6 +21,10 @@ const initialState = {
               return {...state,errors:payload}
               case GET_CURRENT_SUCCESS:
                 return { ...state,  currentUser: payload}
+                case EDIT_USER_SUCCESS:
+                  return { ...state, currentUser: payload, errors: {} };
+                case EDIT_USER_FAIL:
+                  return { ...state, errors: payload };
                 
                 case LOGOUT:
             localStorage.removeItem("token")

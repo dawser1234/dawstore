@@ -23,6 +23,7 @@ import { getusers } from './Redux/Actions/actionUser';
 import { useEffect } from 'react';
 import Cart from './components/Cart/Cart';
 import PrivateRoute from './components/Routes/PrivatesRoutes';
+import AdminRoute from './components/Routes/AdminRoutes';
 
 function App() {
   const dispatch=useDispatch()
@@ -50,10 +51,10 @@ dispatch(getAllProducts());
     <Route path='/register' element={<Register/>}/>
     <Route path='/Profil' element={<PrivateRoute><Profil/></PrivateRoute>}/>
     <Route path='/Product' element={<PrivateRoute><ListProduct/></PrivateRoute>}/>
-    <Route path='/UserList' element={<PrivateRoute><UserList/></PrivateRoute>}/>
-    <Route path='/AddProduct' element={<PrivateRoute><AddProduct/></PrivateRoute>}/>
-    <Route path='/EditProduct/:id' element={<EditProduct/>}/>
-    <Route path='/EditProfile' element={<EditProfile/>}/>
+    <Route path='/UserList' element={<AdminRoute><UserList/></AdminRoute>}/>
+    <Route path='/AddProduct' element={<AdminRoute><AddProduct/></AdminRoute>}/>
+    <Route path='/EditProduct/:id' element={<AdminRoute><EditProduct/></AdminRoute>}/>
+    <Route path='/EditProfile/' element={<EditProfile/>}/>
     <Route path='/cart' element={<Cart/>}/>
 
 

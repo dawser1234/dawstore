@@ -1,5 +1,5 @@
 import { GET_ALLPRODUCTS_SUCCESS } from "../Const/constProduct"
-import { ADD_USER_FAIL, ADD_USER_SUCCESS, GET_ALLUSER_FAIL, GET_ALLUSER_SUCCESS, LOGIN_FAIL, LOGIN_SUCCESS,GET_CURRENT_SUCCESS,GET_CURRENT_FAIL,LOGOUT} from "../Const/constUser"
+import { ADD_USER_FAIL, ADD_USER_SUCCESS, GET_ALLUSER_FAIL, GET_ALLUSER_SUCCESS, LOGIN_FAIL, LOGIN_SUCCESS,GET_CURRENT_SUCCESS,GET_CURRENT_FAIL,LOGOUT,EDIT_USER_SUCCESS,EDIT_USER_FAIL} from "../Const/constUser"
 import axios from "axios"
 export const addUser = (Body,navigate) => async (dispatch) => {
     try {
@@ -82,8 +82,33 @@ export const logout = () => {
   return { type: LOGOUT } 
 }
 
+export const editUser = (userId, userData, navigate) => async (dispatch) => {
+  const token = localStorage.getItem("token");
+  
+  try {
+    
+    // Add other formData.append lines for additional fields
+ const response = await axios.put(
+      `http://localhost:5000/api/user/${userId}`,
+      userData, {
+        headers: {
+          Authorization: `Bearer ${token}` },
+      }
+    );
 
-
-
+    dispatch({
+      type: EDIT_USER_SUCCESS,
+      payload: response.data,
+    });
+    navigate('/Profil')
+    // Redirect to a different page (e.g., home) after successful edit
+    
+  } catch (error) {
+    dispatch({
+      type: EDIT_USER_FAIL,
+      payload: error.response ? error.response.data : 'Error editing user',
+    });
+  }
+};
 
         

@@ -106,10 +106,10 @@ const Register = () => {
           </div>
           <div className="card-footer">
             <div className="d-flex justify-content-center links">
-              Already have an account? <a href="#">Sign In</a>
+             
             </div>
             <div className="d-flex justify-content-center">
-              <a href="#">Forgot your password?</a>
+            
             </div>
           </div>
         </div>
