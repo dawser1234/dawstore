@@ -58,7 +58,7 @@ const Login = () => {
                   </span>
                 </div>
                 <input type="password" className="form-control" placeholder="password" onChange={(e) => setpassword(e.target.value)}  />
-              </div>
+              </div><Alert/>
               <div className="row align-items-center remember">
                 <input type="checkbox" />Remember Me
               </div>

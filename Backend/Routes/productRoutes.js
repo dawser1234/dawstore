@@ -3,6 +3,7 @@ const product = require('../models/product');
 const upload = require('../utils/multer');
 const isAuth = require('../middlewares/Autho');
 const router = express.Router();
+const isAdmin=require('../middlewares/Admin')
 
 router.post("/", upload("products").single("file"), async (req, res) => {
     try {

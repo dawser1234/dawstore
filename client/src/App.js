@@ -18,16 +18,28 @@ import EditProduct from './components/Product/Editproduct';
 import EditProfile from './components/Profil/EditProfil';
 import { useDispatch } from 'react-redux';
 import { getAllProducts } from './Redux/Actions/actionProduct';
+import { getCurrent } from './Redux/Actions/actionUser';
+import { getusers } from './Redux/Actions/actionUser';
 import { useEffect } from 'react';
+import Cart from './components/Cart/Cart';
+import PrivateRoute from './components/Routes/PrivatesRoutes';
 
 function App() {
-  const dipstach=useDispatch()
+  const dispatch=useDispatch()
   
   useEffect(() => {
    
-dipstach(getAllProducts())
+
+dispatch(getAllProducts());
+
 
   }, [])
+  useEffect(() => {
+   
+    
+    dispatch(getCurrent())
+    
+      }, [])
   
   
   return (
@@ -36,12 +48,13 @@ dipstach(getAllProducts())
     <Route path='/' element={ <Home/>}/>
     <Route path='/login' element={<Login/>}/>
     <Route path='/register' element={<Register/>}/>
-    <Route path='/Profil' element={<Profil/>}/>
-    <Route path='/Product' element={<ListProduct/>}/>
-    <Route path='/UserList' element={<UserList/>}/>
-    <Route path='/AddProduct' element={<AddProduct/>}/>
+    <Route path='/Profil' element={<PrivateRoute><Profil/></PrivateRoute>}/>
+    <Route path='/Product' element={<PrivateRoute><ListProduct/></PrivateRoute>}/>
+    <Route path='/UserList' element={<PrivateRoute><UserList/></PrivateRoute>}/>
+    <Route path='/AddProduct' element={<PrivateRoute><AddProduct/></PrivateRoute>}/>
     <Route path='/EditProduct/:id' element={<EditProduct/>}/>
     <Route path='/EditProfile' element={<EditProfile/>}/>
+    <Route path='/cart' element={<Cart/>}/>
 
 
     

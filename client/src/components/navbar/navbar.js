@@ -2,12 +2,18 @@ import React from 'react'
 import Logo from '../logo/logo'
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom'
+import {  useDispatch, useSelector } from 'react-redux'
 import  './navbar.css'
 
 
 
 function NNavbar() {
+
+  const token = localStorage.getItem("token"); 
+  const user = useSelector(state => state.userReducer.currentUser);
+  const isAdmin = user && user.role === 'Admin';
   return (
+    <div>
     
    <nav className="navbar navbar-expand-lg bg-body-tertiary ">
   <div className="container-fluid">
@@ -26,14 +32,14 @@ function NNavbar() {
         </li>
         
         <li className="nav-item">
-        <Link to={'/'} ><Button className='btdaw' variant="outline-secondary">Home</Button>{' '}</Link>
-        <Link to={'Register'}><Button className='btdaw' variant="outline-secondary">Register</Button>{' '} </Link>
-       <Link to={'/login'}> <Button variant="outline-secondary" className='btdaw' >Login</Button>{' '}</Link>
-        <Link to={'/Profil'}><Button variant="outline-secondary" className='btdaw' >Profil</Button>{' '}</Link>
+        {window.location.pathname!=="/"&&token ? <Link to={'/'} ><Button className='btdaw' variant="outline-secondary">Home</Button>{' '}</Link> :null}
+        { !token ? <Link to={'Register'}><Button className='btdaw' variant="outline-secondary">Register</Button>{' '} </Link>:null}
+        { !token ? <Link to={'/login'}> <Button variant="outline-secondary" className='btdaw' >Login</Button>{' '}</Link>:null}
+        { token ? <Link to={'/Profil'}><Button variant="outline-secondary" className='btdaw' >Profil</Button>{' '}</Link>:null}
         <Link to={'/Product'}><Button variant="outline-secondary" className='btdaw'>Product</Button>{' '}</Link>
-        <Link to={'/AddProduct'}><Button variant="outline-secondary" className='btdaw'>addproduct</Button>{' '}</Link>
-        <Link to={'/EditProduct'}><Button variant="outline-secondary" className='btdaw'>EditProduct</Button>{' '}</Link>
-        <Link to={'/UserList'}><Button variant="outline-secondary" className='btdaw'>UserList</Button>{' '}</Link>
+        { isAdmin ? <Link to={'/AddProduct'}><Button variant="outline-secondary" className='btdaw'>addproduct</Button>{' '}</Link>:null}
+        
+        { isAdmin ? <Link to={'/UserList'}><Button variant="outline-secondary" className='btdaw'>UserList</Button>{' '}</Link>:null}
         
         </li>
       </ul>
@@ -44,6 +50,7 @@ function NNavbar() {
     </div>
   </div>
 </nav>
+</div>
 
    
   )

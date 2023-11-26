@@ -3,14 +3,22 @@ import './Product.css'
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom'
 import { deleteProduct } from '../../Redux/Actions/actionProduct';
-import { useDispatch } from 'react-redux';
+import { addToCart } from '../../Redux/Actions/actionProduct';
+import { useDispatch,useSelector } from 'react-redux';
 function Product({el}) {
   const dispatch = useDispatch();
   const handleDelete = (productId) => {
     // Dispatch the deleteProduct action with the product ID
     dispatch(deleteProduct(productId));};
     
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  };
+  const user = useSelector(state => state.userReducer.currentUser);
+  const isAdmin = user && user.role === 'Admin';
+    
   return (
+    
     
   <div className="text-center container py-5">
     <h4 className="mt-4 mb-5"><strong></strong></h4>
@@ -36,17 +44,28 @@ function Product({el}) {
             </a>
             <a href className="text-reset">
               <p>{el.description}</p>
-              <button type="button" class="btn btn-warning" onClick={() => handleDelete(el._id)}>delete</button>
+              { isAdmin ?  <button type="button" class="btn btn-warning" onClick={() => handleDelete(el._id)}>delete</button>:null}
+              <br></br>
+              <br>
+              </br>
+              <Link to={'/cart'}><button
+              type="button"
+              class="btn btn-warning"
+              onClick={() => handleAddToCart(el)}
+            >
+              Add to Cart
+            </button></Link>
               <br></br>
               <br></br>
-             <Link to={`/EditProduct/${el._id}`}><button type="button" class="btn btn-warning">edit</button></Link>
+              { isAdmin ? <Link to={`/EditProduct/${el._id}`}><button type="button" class="btn btn-warning">edit</button></Link>:null}
             </a>
             <h6 className="mb-3">{el.price}</h6>
           </div>
         </div>
       </div>
       </div>
-      
+     
+
   </div>
 
   )

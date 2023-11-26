@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useEffect }  from 'react';
 import './Profil.css'
-import { Link } from 'react-router-dom';
+import { Link,  useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import {  useDispatch, useSelector } from 'react-redux'
+import { getCurrent, logout } from '../../Redux/Actions/actionUser';
 
 function Profil() {
+  const dispatch=useDispatch()
+  const navigate=useNavigate()
+    const user = useSelector(state => state.userReducer.currentUser)
+   
+    useEffect(() => {
+      dispatch(getCurrent())
+    }, [])
+    console.log(user)
+    
   return (
     <div>
       <section className="h-100 gradient-custom-2">
@@ -13,13 +24,13 @@ function Profil() {
               <div className="card crd">
                 <div className="rounded-top text-white d-flex flex-row" style={{ backgroundColor: '#000', height: '200px' }}>
                   <div className="ms-4 mt-5 d-flex flex-column" style={{ width: '150px' }}>
-                    <img src="https://scontent.fnbe1-2.fna.fbcdn.net/v/t39.30808-6/395447242_3503885619884211_368375593821013901_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=Y7Fc4Fs9iTUAX-_c02n&_nc_ht=scontent.fnbe1-2.fna&oh=00_AfARZtDWf6Y3LJCyCnLv4V92uM568ZqwyXd6zuP-7AOwhQ&oe=655A08EF"
+                    <img src={user&&user.img}
                       alt="Generic placeholder image" className="img-fluid img-thumbnail mt-4 mb-2"
                       style={{ width: '150px', zIndex: 1 }} />
                       
                   </div>
                   <div className="ms-3" style={{ marginTop: '130px' }}>
-                    <h5>Ghzel dawser</h5>
+                    <h5> </h5>
                     <p>tunisia</p>
                   </div>
                 </div>
@@ -32,9 +43,9 @@ function Profil() {
                   <div className="mb-5">
                     <p className="lead fw-normal mb-1">About</p>
                     <div className="p-4" style={{ backgroundColor: '#f8f9fa' }}>
-                      <p className="font-italic mb-1">Web Developer</p>
-                      <p className="font-italic mb-1">Lives in New York</p>
-                      <p className="font-italic mb-0">Photographer</p>
+                      <p className="font-italic mb-1">{user&&user.email}</p>
+                      <p className="font-italic mb-1">{user&&user.name}</p>
+                      
                     </div>
                     <Link to={'/Editprofile'} ><Button className='btdaw btdaw2' variant="outline-secondary">EditProfile</Button>{' '}</Link>
                   </div>
@@ -43,6 +54,8 @@ function Profil() {
                 </div>
                 <br></br>
                 <Link to={'/'} ><Button className='btdaw' variant="outline-secondary">Home</Button>{' '}</Link>
+                <br></br>
+                 <Button className='btdaw' variant="outline-secondary" onClick={() => dispatch(logout(),navigate("/"))}>logout</Button>{' '}
               </div>
             </div>
           </div>

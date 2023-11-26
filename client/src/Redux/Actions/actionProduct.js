@@ -11,6 +11,8 @@ import {
   UPDATE_PRODUCT_FAIL,
   GET_ONE_PRODUCT_SUCCESS,
   GET_ONE_PRODUCT_FAIL,
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
 } from "../Const/constProduct";
 
 export const getAllProducts = () => async (dispatch) => {
@@ -103,4 +105,29 @@ export const getOneProduct = (productId) => async (dispatch) => {
       payload: error.message,
     });
   }
+};
+export const addToCart = (product) => {
+  const productToAdd = {
+    ...product,
+    quantity: 1, // Set an initial quantity
+  };
+
+  return {
+    type: ADD_TO_CART,
+    payload: productToAdd,
+  };
+};
+
+export const removeFromCart = (productId) => ({
+  type: REMOVE_FROM_CART,
+  payload: productId,
+});
+export const updateCartItemQuantity = (productId, newQuantity) => {
+  return {
+    type: 'UPDATE_CART_ITEM_QUANTITY',
+    payload: {
+      productId,
+      newQuantity,
+    },
+  };
 };

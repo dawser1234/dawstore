@@ -12,8 +12,8 @@ router.post("/register",upload("users").single("file"),registerCheck(), validato
     const { email, password, role } = req.body
     try {
         const url =` ${req.protocol}://${req.get("host")}/${req.file.path}`
-        const newusers = new user(req.body);
-        newusers.img=url
+        const newuser = new user(req.body);
+        newuser.img=url
         if (role=="Admin") {
             return res.status(401).send({ msg: "not auth !!" })
         }
@@ -22,7 +22,7 @@ router.post("/register",upload("users").single("file"),registerCheck(), validato
            return res.status(400).send({msg:"already exist"})
         }
 
-        const newuser = new user(req.body);
+        
         const hashedPassword = await bcrypt.hash(password, 10)
         newuser.password = hashedPassword
      const saveduser = await newuser.save();

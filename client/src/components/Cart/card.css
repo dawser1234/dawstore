@@ -1,0 +1,48 @@
+/* Cart.css */
+
+/* Container styles */
+.Cart {
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #333; /* Updated to a dark background color */
+    color: #ffcc00; /* Text color (yellow) */
+  }
+  
+  /* Header styles */
+  h2 {
+    color: #ffcc00; /* Header text color (yellow) */
+  }
+  p{
+    color: #ffcc00;
+  }
+  .tt{
+    color: #ffcc00;
+  }
+  
+  /* Cart item styles */
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Remove button styles */
+  li button {
+    background-color: #dc3545; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
